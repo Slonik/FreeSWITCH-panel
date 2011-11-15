@@ -1,0 +1,212 @@
+* {
+margin: 0;
+padding: 0;
+font-family: Arial, sans-serif;
+font-size: 100.1%;
+font-size: 1em;
+}
+body {
+margin: 4px;
+}
+h3 {
+text-align: center;
+color: #2163A4;
+font-size: 16px;
+text-shadow: 1px 1px 0 rgba(200, 200, 200, 0.7);
+}
+
+#extensions, #calls, #conferences, #freetdms
+{
+sheight: 50%;
+padding: 6px;
+float: left;
+margin-right: 12px;
+}
+#extensions {
+width: 16%;
+}
+#calls {
+width: 28%;
+}
+#conferences {
+width: 19%;
+}
+#freetdms {
+width: 22%;
+}
+
+#main_header {
+background: url("../images/tab_background.gif") repeat-x scroll 0 0 transparent;
+border: 1px solid #DDDDDD;
+border-radius: 5px 5px 5px 5px;
+height: 26px;
+color: #4183C4;
+font-size: 14px;
+height: 26px;
+line-height: 26px;
+margin-bottom: 8px;
+padding: 0 8px;
+text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.ui-widget-content {
+background: 0;
+border: 0;
+}
+.ui-widget-header {
+background: 0;
+border: 0;
+}
+
+.block_green {
+    background-color: #F0FFF0;
+    border: 1px solid #ACCBAC;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 1px 3px #DDDDDD;
+    display: block;
+    margin: 0px 0 15px;
+    overflow: hidden;
+    padding: 20px;
+}
+.block_green .ui-widget-content {
+background-color: #F0FFF0;
+}
+.block_green .ui-tabs-panel {
+border: 1px solid #ACCBAC;
+border-radius: 5px;
+}
+.block_yellow {
+    background-color: #FFFFF0;
+    border: 1px solid #CBCBAC;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 1px 3px #DDDDDD;
+    display: block;
+    margin: 0px 0 15px;
+    overflow: hidden;
+    padding: 20px;
+}
+.block_yellow .ui-widget-content {
+background-color: #FFFFF0;
+}
+.block_yellow .ui-tabs-panel {
+border: 1px solid #CBCBAC;
+border-radius: 5px;
+}
+.block_blue {
+    background-color: #F0FFFF;
+    border: 1px solid #ACCBCB;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 1px 3px #DDDDDD;
+    display: block;
+    margin: 0px 0 15px;
+    overflow: hidden;
+    padding: 20px;
+}
+.block_blue .ui-widget-content {
+background-color: #F0FFFF;
+}
+.block_blue .ui-tabs-panel {
+border: 1px solid #ACCBCB;
+border-radius: 5px;
+}
+.block_red {
+    background-color: #FFF0F0;
+    border: 1px solid #CBACAC;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 1px 3px #DDDDDD;
+    display: block;
+    margin: 0px 0 15px;
+    overflow: hidden;
+    padding: 20px;
+}
+.block_red .ui-widget-content {
+background-color: #FFF0F0;
+}
+.block_red .ui-tabs-panel {
+border: 1px solid #CBACAC;
+border-radius: 5px;
+}
+.datatable {
+font-size: 14px;
+border-collapse: collapse;
+}
+.datatable th, .datatable td {
+padding: 1px;
+border: 2px solid white;
+}
+#panel_green {
+width: 100%;
+border-bottom: 1px solid #ACCBCB;
+margin-bottom: 8px;
+margin-top: 16px;
+}
+#panel_blue {
+width: 100%;
+border-bottom: 1px solid #ACCBCB;
+margin-bottom: 8px;
+margin-top: 16px;
+}
+#panel_blue span, #panel_yellow span {
+cursor: hand;
+cursor: pointer;
+margin: 0;
+padding: 0;
+}
+#panel_yellow {
+width: 100%;
+border-bottom: 1px solid #CBCBAC;
+margin-bottom: 8px;
+margin-top: 16px;
+}
+.yellow_border {
+border-bottom: 1px solid #CBCBAC;
+}
+.row_selected {
+background-color: #D0DDDD;
+}
+.conf_header {
+text-align: center;
+font-weight: bold;
+}
+.sort_header {
+cursor: hand;
+cursor: pointer;
+}
+#logo {
+float: left;
+}
+.top_item {
+float: right;
+margin-right: 16px;
+cursor: hand;
+cursor: pointer;
+}
+input[type=submit], input[type=reset], input[type=button] {
+border-color:#c2e254 #9bb838 #9bb838 #c2e254;
+border-style:solid;
+border-width:1px;
+background-color: #D0F0D0;
+cursor: hand;
+cursor: pointer;
+padding: 0px 4px 0px 4px;
+}
+#settings, #about, #commands, #cmdresult {
+position: absolute;
+left: 100px;
+right: 100px;
+width: 240px;
+height: 160px;
+z-index: 1;
+display: none;
+}
+#commands td {
+cursor: hand;
+cursor: pointer;
+}
+#cmdresult {
+width: 400px;
+height: 300px;
+}
+span.cmd_button:hover {
+background-color: #D0F0D0;
+}
