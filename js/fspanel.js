@@ -609,6 +609,8 @@ $('#cmd_conf_kick, #cmd_conf_deaf, #cmd_conf_mute, #cmd_conf_undeaf, #cmd_conf_u
 	$('#table_conf .row_selected').removeClass('row_selected');
 });
 
+$(".sliders").slider();
+
 calldata.initialize();
 extsdata.initialize();
 confdata.initialize();

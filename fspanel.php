@@ -68,7 +68,7 @@ class socketReader {
 }
 // For old versions PHP
 if ( !function_exists('json_decode') ){
-function json_decode($json)
+function json_decode($json, $assoc=false)
 {
     $comment = false;
     $out = '$x=';
@@ -532,9 +532,9 @@ $useSofia = false;
 $useFTDM = false;
 
 $src = array();
-//$src = array('exts'=>array()); // for debug
+//$src = array('channels'=>array()); // for debug
 if (array_key_exists('data', $_POST)) {
-	$src = json_decode($_POST['data']);
+	$src = json_decode($_POST['data'], true);
 }
 if (array_key_exists('channels', $src)) {
 	$useChan = true;

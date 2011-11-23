@@ -9,6 +9,20 @@
 		<script type="text/javascript" src="js/jquery.json-2.2.min.js"></script>
 		<script type="text/javascript" src="js/jquery.tinysort.js"></script>
 		<script type="text/javascript" src="js/fspanel.js"></script>
+<style>
+.context_menu {
+swidth: 250px;
+border-collapse: collapse;
+}
+.context_menu td {border-bottom: 1px solid #dddddd; }
+.ui-widget { font-size: 10px; }
+.sliders { padding: 4px !important; width: 100px; float: right; display: inline; margin-top: 4px; margin-right: 10px;}
+.ui-widget-content { border: 1px solid #dddddd; height: 2px;}
+.cmd_item { padding-left: 8px; }
+.cmd_item input { border: 1px solid #dddddd; font-size: 12px; }
+
+#conf_cmd { padding: 4px; width: 250px; display: none;}
+</style>
 </head>
 <body>
 <div id="main_header">
@@ -38,6 +52,34 @@ FreeSWITCH admin panel<br /><br />
 version 0.9<br />
 <a href="https://sites.google.com/site/freeswitched/?from=panel_0_9">Download, info, etc.</a>
 </div>	
+
+<div id="conf_cmd" class="block_red">
+<table class="context_menu">
+<!-- 
+<tr><td class="cmd_item" id="cmd_1">volume in <div class="sliders"><div id="slider_conf_vol_in"></div></div></td></tr>
+<tr><td class="cmd_item" id="cmd_">reloadxml</td></tr>
+-->
+<tr><td>conference member: </td></tr>
+<tr><td class="cmd_item" id="cmd_3">deaf</td></tr>
+<tr><td class="cmd_item" id="cmd_4">undeaf</td></tr>
+<tr><td class="cmd_item" id="cmd_5">mute</td></tr>
+<tr><td class="cmd_item" id="cmd_6">unmute</td></tr>
+<tr><td class="cmd_item" id="cmd_7">hup</td></tr>
+<tr><td class="cmd_item" id="cmd_8">kick</td></tr>
+<tr><td class="cmd_item" id="cmd_9">transfer to <input type="text" size="5"></td></tr>
+<tr><td class="cmd_item" id="cmd_10">volume in <div class="sliders"><div id="slider_conf_vol_in"></div></div></td></tr>
+<tr><td class="cmd_item" id="cmd_11">volume out <div class="sliders"><div id="slider_conf_vol_out"></div></div></td></tr>
+<tr><td class="cmd_item" id="cmd_12">energy 50-2000<div class="sliders"><div id="slider_conf_energy"></div></div></td></tr>
+<tr><td>conference: </td></tr>
+<tr><td class="cmd_item" id="cmd_13">lock</td></tr>
+<tr><td class="cmd_item" id="cmd_14">unlock</td></tr>
+<tr><td class="cmd_item" id="cmd_15">pin <input type="text" size="5"></td></tr>
+<tr><td class="cmd_item" id="cmd_16">nopin</td></tr>
+<tr><td class="cmd_item" id="cmd_17">dial <input type="text" size="5"></td></tr>
+<tr><td class="cmd_item" id="cmd_18">dtmf</td></tr>
+
+</table>
+</div>
 
 <div id="commands" class="block_red">
 	<h3>Commands</h3>
