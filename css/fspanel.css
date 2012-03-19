@@ -13,9 +13,11 @@ text-align: center;
 color: #2163A4;
 font-size: 16px;
 text-shadow: 1px 1px 0 rgba(200, 200, 200, 0.7);
+border-bottom: 1px solid #dddddd;
+margin-bottom: 8px;
 }
 
-#extensions, #calls, #conferences, #freetdms
+#extensions, #calls, #conferences, #freetdms, #sofiastatuses
 {
 sheight: 50%;
 padding: 6px;
@@ -23,6 +25,9 @@ float: left;
 margin-right: 12px;
 }
 #extensions {
+width: 16%;
+}
+#sofiastatuses {
 width: 16%;
 }
 #calls {
@@ -134,30 +139,6 @@ border-collapse: collapse;
 padding: 1px;
 border: 2px solid white;
 }
-#panel_green {
-width: 100%;
-border-bottom: 1px solid #ACCBCB;
-margin-bottom: 8px;
-margin-top: 16px;
-}
-#panel_blue {
-width: 100%;
-border-bottom: 1px solid #ACCBCB;
-margin-bottom: 8px;
-margin-top: 16px;
-}
-#panel_blue span, #panel_yellow span {
-cursor: hand;
-cursor: pointer;
-margin: 0;
-padding: 0;
-}
-#panel_yellow {
-width: 100%;
-border-bottom: 1px solid #CBCBAC;
-margin-bottom: 8px;
-margin-top: 16px;
-}
 .yellow_border {
 border-bottom: 1px solid #CBCBAC;
 }
@@ -168,7 +149,9 @@ background-color: #D0DDDD;
 text-align: center;
 font-weight: bold;
 }
-.sort_header {
+.sort_sign {
+font-size: 10px;
+color: blue;
 cursor: hand;
 cursor: pointer;
 }
@@ -195,7 +178,7 @@ position: absolute;
 left: 100px;
 right: 100px;
 width: 240px;
-height: 160px;
+height: 200px;
 z-index: 1;
 display: none;
 }
@@ -207,6 +190,43 @@ cursor: pointer;
 width: 400px;
 height: 300px;
 }
-span.cmd_button:hover {
-background-color: #D0F0D0;
+.settings_div {
+	display: none;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+#table_conf {width: 100%}
+.ui-widget { font-size: 10px; }
+.sliders {
+	padding: 4px !important;
+	width: 100px;
+	float: right;
+	display: inline;
+	margin-top: 4px;
+	margin-right: 10px;
+}
+.ui-widget-content { border: 1px solid #dddddd; height: 2px;}
+.cmd_item {
+	border: 1px solid #dddddd;
+	border-radius: 4px;
+	margin: 2px;
+	padding-left: 8px;
+	cursor: hand;
+	cursor: pointer;
+}
+.cmd_item input { border: 1px solid #dddddd; }
+.cmd_item_hover {background-color: #F0DDDD;}
+.context_menu_hdr_left {float: left;}
+.context_menu_hdr_right {float: right;}
+.cmd_div {
+	padding: 4px;
+	display: none;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 1;
+}
+#cmdresult {
+	overflow: scroll;
 }

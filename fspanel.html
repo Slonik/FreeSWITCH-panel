@@ -1,137 +1,170 @@
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>FreeSWITCH panel</title>
-		<link type="text/css" href="css/cupertino/jquery-ui-1.8.14.custom.css" rel="stylesheet" />	
-		<link type="text/css" href="css/fspanel.css" rel="stylesheet" />	
-		<script type="text/javascript" src="js/jquery-1.6.4.min.js"></script>
-		<script type="text/javascript" src="js/jquery-ui-1.8.14.custom.min.js"></script>
-		<script type="text/javascript" src="js/jquery.json-2.2.min.js"></script>
-		<script type="text/javascript" src="js/jquery.tinysort.js"></script>
-		<script type="text/javascript" src="js/fspanel.js"></script>
-<style>
-.context_menu {
-swidth: 250px;
-border-collapse: collapse;
-}
-.context_menu td {border-bottom: 1px solid #dddddd; }
-.ui-widget { font-size: 10px; }
-.sliders { padding: 4px !important; width: 100px; float: right; display: inline; margin-top: 4px; margin-right: 10px;}
-.ui-widget-content { border: 1px solid #dddddd; height: 2px;}
-.cmd_item { padding-left: 8px; }
-.cmd_item input { border: 1px solid #dddddd; font-size: 12px; }
-
-#conf_cmd { padding: 4px; width: 250px; display: none;}
-</style>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>FreeSWITCH panel</title>
+	<link type="text/css" href="css/cupertino/jquery-ui-1.8.14.custom.css" rel="stylesheet" />	
+	<link type="text/css" href="css/fspanel.css" rel="stylesheet" />	
+	<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="js/jquery-ui-1.8.14.custom.min.js"></script>
+	<script type="text/javascript" src="js/jquery.json-2.2.min.js"></script>
+	<script type="text/javascript" src="js/jquery.tinysort.js"></script>
+	<script type="text/javascript" src="js/fspanel.js"></script>
 </head>
 <body>
 <div id="main_header">
-<div id="logo">FreeSWITCH panel</div>
-<div class="top_item" id="top_about">&copy;</div>
-<div class="top_item" id="top_commands">commands</div>
-<div class="top_item" id="top_settings">settings</div>
+	<div id="logo">FreeSWITCH panel</div>
+	<div class="top_item" id="top_about">&copy;</div>
+	<div class="top_item" id="top_commands">commands</div>
+	<div class="top_item" id="top_settings">settings</div>
 </div>
 
 <div id="settings" class="block_green">
 	<h3>Settings</h3>
-<form>
-<input type="checkbox" id="opt_ext" name="opt_ext" value="opt_ext"> Extensions (SIP Sofia)<br />
-<input type="checkbox" id="opt_call" name="opt_call" value="opt_call"> Calls<br />
-<input type="checkbox" id="opt_conf" name="opt_conf" value="opt_conf"> Conferences<br />
-<input type="checkbox" id="opt_ftdm" name="opt_ftdm" value="opt_ftdm"> FreeTDM channels<br />
-<br />
-<input type="button" value="Save" id="set_save"> <input type="button" value="Cancel" id="set_cancel">
-</form>
+	<form>
+	<input type="checkbox" id="opt_ext" name="opt_ext" value="opt_ext"> Extensions (SIP Sofia)<br />
+	<input type="checkbox" id="opt_ss" name="opt_ss" value="opt_ss"> SIP Sofia status<br />
+	<input type="checkbox" id="opt_call" name="opt_call" value="opt_call"> <select id="opt_call_func" name="opt_call_func" value="opt_call_func">
+			<option value="channels">Channels</option>
+			<option value="calls">Calls</option>
+			<option value="detailed_calls">Detailed calls</option>
+			</select><br />
+	<input type="checkbox" id="opt_conf" name="opt_conf" value="opt_conf"> Conferences<br />
+	<input type="checkbox" id="opt_ftdm" name="opt_ftdm" value="opt_ftdm"> FreeTDM channels<br />
+	<br />
+	<input type="button" value="Save" id="set_save"> <input type="button" value="Cancel" id="set_cancel">
+	</form>
 </div>	
 
 <div id="about" class="block_red">
 	<h3>About</h3>
-<br />
-FreeSWITCH admin panel<br /><br />
-&copy; Valery Kalinin<br />
-version 0.9<br />
-<a href="https://sites.google.com/site/freeswitched/?from=panel_0_9">Download, info, etc.</a>
+	<br />
+	FreeSWITCH panel<br /><br />
+	&copy; Valery Kalinin<br />
+	version 0.99<br />
+	<a href="https://sites.google.com/site/freeswitched/?from=panel_0_99">Download, info, etc.</a>
 </div>	
 
-<div id="conf_cmd" class="block_red">
-<table class="context_menu">
-<!-- 
-<tr><td class="cmd_item" id="cmd_1">volume in <div class="sliders"><div id="slider_conf_vol_in"></div></div></td></tr>
-<tr><td class="cmd_item" id="cmd_">reloadxml</td></tr>
--->
-<tr><td>conference member: </td></tr>
-<tr><td class="cmd_item" id="cmd_3">deaf</td></tr>
-<tr><td class="cmd_item" id="cmd_4">undeaf</td></tr>
-<tr><td class="cmd_item" id="cmd_5">mute</td></tr>
-<tr><td class="cmd_item" id="cmd_6">unmute</td></tr>
-<tr><td class="cmd_item" id="cmd_7">hup</td></tr>
-<tr><td class="cmd_item" id="cmd_8">kick</td></tr>
-<tr><td class="cmd_item" id="cmd_9">transfer to <input type="text" size="5"></td></tr>
-<tr><td class="cmd_item" id="cmd_10">volume in <div class="sliders"><div id="slider_conf_vol_in"></div></div></td></tr>
-<tr><td class="cmd_item" id="cmd_11">volume out <div class="sliders"><div id="slider_conf_vol_out"></div></div></td></tr>
-<tr><td class="cmd_item" id="cmd_12">energy 50-2000<div class="sliders"><div id="slider_conf_energy"></div></div></td></tr>
-<tr><td>conference: </td></tr>
-<tr><td class="cmd_item" id="cmd_13">lock</td></tr>
-<tr><td class="cmd_item" id="cmd_14">unlock</td></tr>
-<tr><td class="cmd_item" id="cmd_15">pin <input type="text" size="5"></td></tr>
-<tr><td class="cmd_item" id="cmd_16">nopin</td></tr>
-<tr><td class="cmd_item" id="cmd_17">dial <input type="text" size="5"></td></tr>
-<tr><td class="cmd_item" id="cmd_18">dtmf</td></tr>
-
-</table>
+<div id="cmd_conf_member" class="block_red cmd_div">
+	<table class="context_menu">
+	<tr><td><div class="context_menu_hdr_left">conference member: <span id="conf_member_id"></span></div><div class="context_menu_hdr_right"><img src="images/close_button.png" width="16" height="16" title="Close this menu" alt="*" onClick="cmdClose('conf_member', 'conf');"></div></td></tr>
+	<tr><td class="cmd_item" id="cmd_conf_deaf">deaf</td></tr>
+	<tr><td class="cmd_item" id="cmd_conf_undeaf">undeaf</td></tr>
+	<tr><td class="cmd_item" id="cmd_conf_mute">mute</td></tr>
+	<tr><td class="cmd_item" id="cmd_conf_unmute">unmute</td></tr>
+	<tr><td class="cmd_item" id="cmd_conf_hup">hup</td></tr>
+	<tr><td class="cmd_item" id="cmd_conf_kick">kick</td></tr>
+	<tr><td class="cmd_item" id="cmd_conf_transfer">transfer to <input type="text" size="5" id="value_conf_transfer" name="value_conf_transfer"></td></tr>
+	<tr><td class="cmd_item" id="cmd_conf_vol_in">volume in <span id="value_conf_vol_in">0</span><div class="sliders" id="slider_conf_vol_in"></div></td></tr>
+	<tr><td class="cmd_item" id="cmd_conf_vol_out">volume out <span id="value_conf_vol_out">0</span><div class="sliders" id="slider_conf_vol_out"></div></td></tr>
+	<tr><td class="cmd_item" id="cmd_conf_energy">energy <span id="value_conf_energy">0</span><div class="sliders" id="slider_conf_energy"></div></td></tr>
+	</table>
+</div>
+<div id="cmd_conf_conf" class="block_red cmd_div">
+	<table class="context_menu">
+	<tr><td><div class="context_menu_hdr_left">conference: <span id="conf_conf_id"></span></div><div class="context_menu_hdr_right"><img src="images/close_button.png" width="16" height="16" title="Close this menu" alt="*" onClick="cmdClose('conf_conf', 'conf');"></div></td></tr>
+	<tr><td class="cmd_item" id="cmd_conf_lock">lock</td></tr>
+	<tr><td class="cmd_item" id="cmd_conf_unlock">unlock</td></tr>
+	<tr><td class="cmd_item" id="cmd_conf_pin">pin <input type="text" size="5" id="value_conf_pin" name="value_conf_pin"></td></tr>
+	<tr><td class="cmd_item" id="cmd_conf_nopin">nopin</td></tr>
+	<tr><td class="cmd_item" id="cmd_conf_dial">dial <input type="text" size="12" id="value_conf_dial" name="value_conf_dial"></td></tr>
+	<tr><td class="cmd_item" id="cmd_conf_dtmf">dtmf</td></tr>
+	</table>
+</div>
+<div id="cmd_call" class="block_red cmd_div">
+	<table class="context_menu">
+	<tr><td><div class="context_menu_hdr_left">call: <span id="call_id"></span></div><div class="context_menu_hdr_right"><img src="images/close_button.png" width="16" height="16" title="Close this menu" alt="*" onClick="cmdClose('call', 'call');"></div></td></tr>
+	<tr><td class="cmd_item" id="cmd_uuid_kill">hangup</td></tr>
+	</table>
+</div>
+<div id="cmd_ftdm" class="block_red cmd_div">
+	<table class="context_menu">
+	<tr><td><div class="context_menu_hdr_left">span: <span id="span_id"></span></div><div class="context_menu_hdr_right"><img src="images/close_button.png" width="16" height="16" title="Close this menu" alt="*" onClick="cmdClose('ftdm', 'ftdm');"></div></td></tr>
+	<tr><td class="cmd_item" id="cmd_ftdm_start_span">start span</td></tr>
+	<tr><td class="cmd_item" id="cmd_ftdm_stop_span">stop span</td></tr>
+	<tr><td><div class="context_menu_hdr_left">chan: <span id="chan_id"></span></div></td></tr>
+	<tr><td class="cmd_item" id="cmd_ftdm_dump">info</td></tr>
+	<tr><td class="cmd_item" id="cmd_ftdm_kill">session kill</td></tr>
+	</table>
+</div>
+<div id="cmd_profile" class="block_red cmd_div">
+	<table class="context_menu">
+	<tr><td><div class="context_menu_hdr_left">profile: <span id="profile_id"></span></div><div class="context_menu_hdr_right"><img src="images/close_button.png" width="16" height="16" title="Close this menu" alt="*" onClick="cmdClose('profile', 'ss');"></div></td></tr>
+	<tr><td class="cmd_item" id="cmd_profile_rescan">rescan</td></tr>
+	<tr><td class="cmd_item" id="cmd_profile_restart">restart</td></tr>
+	<tr><td class="cmd_item" id="cmd_profile_flush_ir">flush registered endpoints</td></tr>
+	<tr><td class="cmd_item" id="cmd_profile_flush_irr">flush and reboot registered endpoints</td></tr>
+	</table>
+</div>
+<div id="cmd_gateway" class="block_red cmd_div">
+	<table class="context_menu">
+	<tr><td><div class="context_menu_hdr_left">gateway: <span id="gateway_id"></span></div><div class="context_menu_hdr_right"><img src="images/close_button.png" width="16" height="16" title="Close this menu" alt="*" onClick="cmdClose('gateway', 'ss');"></div></td></tr>
+	<tr><td class="cmd_item" id="cmd_gateway_kill">kill</td></tr>
+	</table>
 </div>
 
 <div id="commands" class="block_red">
 	<h3>Commands</h3>
-<table>
-<tr><td class="cmd_item" id="cmd_sofia_status">sofia status</td></tr>
-<tr><td class="cmd_item" id="cmd_reloadxml">reloadxml</td></tr>
-</table>
+	<table>
+	<tr><td class="cmd_item" id="cmd_sofia_status">sofia status</td></tr>
+	<tr><td class="cmd_item" id="cmd_reloadxml">reloadxml</td></tr>
+	<tr><td class="cmd_item" id="cmd_reloadacl">reloadacl</td></tr>
+	<tr><td class="cmd_item" id="cmd_status">status</td></tr>
+	<tr><td class="cmd_item" id="cmd_version">version</td></tr>
+	</table>
 </div>
 
 <div id="cmdresult" class="block_red">
 	<h3>Command result</h3>
-<div id="cmd_result"></div>
-</div>	
+	<div id="cmd_result"></div>
+</div>
 
 <div id="extensions" class="block_green">
-	<h3>Extensions</h3>
-<div id="panel_green">&nbsp;</div>
-<table class="datatable" id="table_ext"></table>
+	<h3>SIP registrations</h3>
+	<table class="datatable" id="table_ext"></table>
+</div>	
+
+<div id="sofiastatuses" class="block_green">
+	<h3>Sofia status</h3>
+	<table class="datatable" id="table_ss"></table>
 </div>	
 
 <div id="calls" class="block_blue">
 	<h3>Calls</h3>
-<div id="panel_blue">
-	<span class="cmd_button" id="cmd_kill_channel"><img src="images/delete2.png" width="16" height="16" title="Hangup channel"> Hangup</span>
-</div>
-<table class="datatable" id="table_calls">
-	<tr><th>&nbsp;</th><th>Number</th><th>Name</th><th>Dest</th><th>Callee name</th><th>Callee num</th><th>Status</th><th>Channel</th></tr>
-<!--	<tr><td>&rarr;</td><td>79227898431</td><td>79227898431</td><td>1056</td><td>Outbound Call</td><td>e1group/a/31552</td><td>ACTIVE</td><td>sofia/megafon/79227898431@10.190.35.18</td></tr>-->
-</table>
+	<table class="datatable" id="table_call">
+	</table>
 </div>
 
 <div id="conferences" class="block_yellow">
 	<h3>Conferences</h3>
-<div id="panel_yellow">
-	<span class="cmd_button" id="cmd_conf_kick"><img src="images/delete2.png" width="16" height="16" title="Kick a member"> kick</span>
-	<span class="cmd_button" id="cmd_conf_deaf"><img src="images/loudspeaker.png" width="16" height="16" title="Deaf a member"> deaf</span><img id="cmd_conf_undeaf" src="images/disable.png" width="16" height="16" title="Undeaf a member">
-	<span class="cmd_button" id="cmd_conf_mute"><img src="images/microphone2.png" width="16" height="16" title="Mute a member"> mute</span><img id="cmd_conf_unmute" src="images/disable.png" width="16" height="16" title="Unmute a member">
-</div>
-<table class="datatable" id="table_conf">
-<thead></thead>
-</table>
+	<table class="datatable" id="table_conf">
+	<thead></thead>
+	</table>
 </div>
 
 <div id="freetdms" class="block_yellow">
 	<h3>FreeTDM</h3>
-<div id="panel_yellow">
-	<span class="cmd_button" id="cmd_ftdm_start"><img src="images/play.png" width="16" height="16" title="Start span"> start span</span>
-	<span class="cmd_button" id="cmd_ftdm_stop"><img src="images/stop.png" width="16" height="16" title="Stop span"> stop span</span>
-	<span class="cmd_button" id="cmd_ftdm_kill"><img src="images/delete2.png" width="16" height="16" title="Session kill"> session kill</span>
+	<table class="datatable" id="table_ftdm">
+	</table>
 </div>
-<table class="datatable" id="table_ftdm">
-</table>
+
+<div class="block_red settings_div" id="exts_settings">
+	<h3>Extensions columns</h3>
+	<form id="exts_form_set"></form>
+</div>
+
+<div class="block_red settings_div" id="ftdm_settings">
+	<h3>FreeTDM columns</h3>
+	<form id="ftdm_form_set"></form>
+</div>
+
+<div class="block_red settings_div" id="call_settings">
+	<h3>Calls columns</h3>
+	<form id="call_form_set"></form>
+</div>
+
+<div class="block_red settings_div" id="ss_settings">
+	<h3>Sofia status columns</h3>
+	<form id="ss_form_set"></form>
 </div>
 
 </body>
